@@ -1,0 +1,44 @@
+<!--Crear un programa que pida ingresar números separados por comas  en un cuadro de texto, los guarde en un array método String.split() 
+y devuelva un mensaje con la suma de todos los números.-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>stringSplit</title>
+    <link rel = "stylesheet" href = "style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Integer sum in a string</h1><br>
+        <label for = "input">Please enter numbers separated by commas (e.g. 1,2,3): </label><br>
+        <input type = "text" id = "input" required>
+        <button type = "button" onclick = "sum()">Enter:</button>
+        <p id = "output"></p>
+    </div>
+
+    <script>
+        const INPUT = document.getElementById("input");
+        function sum(){
+            let input = INPUT.value.trim();
+            let length;
+            let sum = 0;
+            if (input == ""){
+                document.getElementById("output").innerHTML = "Please insert atleast a number!"
+                return;
+            }
+            const array = input.split(",");
+            length = array.length;
+            for (let i = 0; i < length; i++){
+                if (isNaN(array[i])) {
+                    document.getElementById("output").innerHTML = "One of the values is not a valid number!";
+                    return;
+                }
+                sum += parseInt(array[i]);
+            }
+            document.getElementById("output").innerHTML = "This is the sums of the numbers you have entered: " + sum;
+        }
+    </script>
+    
+</body>
+</html>
